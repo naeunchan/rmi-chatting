@@ -1,0 +1,3 @@
+서버 : start rmiregistry 후 java ChatServerImpl 엔터
+
+클라이언트 : java ChatClientImpl 서버의IP주소(예-192.168.43.40) 엔터 
