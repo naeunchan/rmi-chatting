@@ -1,7 +1,4 @@
-/*3ÇĞ³â 1ÇĞ±â ³×Æ®¿öÅ© ÇÁ·Î±×·¡¹Ö ±â¸» ÇÁ·ÎÁ§Æ®
- * RMI¸¦ ÀÌ¿ëÇÑ Ã¤ÆÃ°ú ÆÄÀÏÀü¼Û ÇÁ·Î±×·¥
- * ¼ÒÇÁÆ®¿ş¾îÇĞºÎ 20150260 ÀÌ¼Ò¿µ, 20150262 ÀÌ½ÃÇö
- * Server Interface */
+/* Server Interface */
 import java.io.IOException;
 import java.net.InetAddress;
 import java.rmi.*;
@@ -9,14 +6,14 @@ import java.util.*;
 
 public interface ChatServer extends Remote {
   public static final String REGISTRY_NAME = "rmi://localhost:3333/Callback Server";
-  public abstract void register (ChatClient client) throws RemoteException;	//client°¡ ÀÔÀåÇÒ ¶§ ½ÇÇàµÇ´Â ÇÔ¼ö
-  public abstract void deregister (ChatClient client) throws RemoteException;	//Ã¢À» ´İÀ» °æ¿ì ÇØ´ç client°¡ Ã¤ÆÃ¹æÀ» ³ª°¬´Ù´Â ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö
+  public abstract void register (ChatClient client) throws RemoteException;	//clientê°€ ì…ì¥í•  ë•Œ ì‹¤í–‰ë˜ëŠ” í•¨ìˆ˜
+  public abstract void deregister (ChatClient client) throws RemoteException;	//ì°½ì„ ë‹«ì„ ê²½ìš° í•´ë‹¹ clientê°€ ì±„íŒ…ë°©ì„ ë‚˜ê°”ë‹¤ëŠ” ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
   //public abstract void register_file(ChatClient client) throws IOException;
-  public abstract void say (String message) throws RemoteException;	//¸ğµç clientµé¿¡°Ô ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÏ±â À§ÇÑ ÇÔ¼ö
-  public abstract void setIPAddress(InetAddress sender_ipAddress) throws RemoteException;//ÆÄÀÏÀ» Àü¼ÛÇÏ´Â clientÀÇ ipÁÖ¼Ò ÀúÀå
-  public abstract InetAddress getIPAddress()throws RemoteException;	//privateº¯¼öÀÎ sender_ipAddress¿¡ Á¢±ÙÇÏ±â À§ÇÑ ÇÔ¼ö
-  public abstract ArrayList clientList() throws RemoteException;	//Á¢¼ÓÇÑ clientµéÀÇ ´Ğ³×ÀÓÀ» ÀúÀåÇÏ±â À§ÇÑ ÇÔ¼ö
-  public abstract void whisper(String message) throws RemoteException;	//client°¡ Àü¼ÛÇÑ ¸Ş¼¼Áö°¡ ±Ó¼Ó¸»ÀÏ °æ¿ì ½ÇÇàµÇ´Â ÇÔ¼ö
-  public void uploadSFile(ChatClient sender, FileInfo upInfo) throws IOException, ClassNotFoundException;	//Å¬¶óÀÌ¾ğÆ®¿¡¼­ Àü¼ÛÇÑ ÆÄÀÏÀ» ¼­¹ö¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö
-  public Object downloadSFile(String filePath) throws IOException, ClassNotFoundException;	//¼­¹ö¿¡¼­ ÆÄÀÏÀ» ¹ÙÀÌÆ®´ÜÀ§·Î ÀĞ¾îµå¸®´Â ÇÔ¼ö
+  public abstract void say (String message) throws RemoteException;	//ëª¨ë“  clientë“¤ì—ê²Œ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
+  public abstract void setIPAddress(InetAddress sender_ipAddress) throws RemoteException;//íŒŒì¼ì„ ì „ì†¡í•˜ëŠ” clientì˜ ipì£¼ì†Œ ì €ì¥
+  public abstract InetAddress getIPAddress()throws RemoteException;	//privateë³€ìˆ˜ì¸ sender_ipAddressì— ì ‘ê·¼í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
+  public abstract ArrayList clientList() throws RemoteException;	//ì ‘ì†í•œ clientë“¤ì˜ ë‹‰ë„¤ì„ì„ ì €ì¥í•˜ê¸° ìœ„í•œ í•¨ìˆ˜
+  public abstract void whisper(String message) throws RemoteException;	//clientê°€ ì „ì†¡í•œ ë©”ì„¸ì§€ê°€ ê·“ì†ë§ì¼ ê²½ìš° ì‹¤í–‰ë˜ëŠ” í•¨ìˆ˜
+  public void uploadSFile(ChatClient sender, FileInfo upInfo) throws IOException, ClassNotFoundException;	//í´ë¼ì´ì–¸íŠ¸ì—ì„œ ì „ì†¡í•œ íŒŒì¼ì„ ì„œë²„ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜
+  public Object downloadSFile(String filePath) throws IOException, ClassNotFoundException;	//ì„œë²„ì—ì„œ íŒŒì¼ì„ ë°”ì´íŠ¸ë‹¨ìœ„ë¡œ ì½ì–´ë“œë¦¬ëŠ” í•¨ìˆ˜
 }
